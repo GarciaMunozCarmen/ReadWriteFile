@@ -14,6 +14,9 @@ public class FileTextStore implements TextStore{
 
     @Override
     public void save(Message mensaje) {
+        if(!new File("data/logs.txt").exists()){
+            new File("data/logs.txt");
+        }
 
     }
 

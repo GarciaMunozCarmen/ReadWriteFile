@@ -1,7 +1,9 @@
 package es.fplumara.dam1.textapp.config;
 
+import es.fplumara.dam1.textapp.exceptions.ConfigException;
 import es.fplumara.dam1.textapp.files.StoreType;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,8 +25,8 @@ public class AppConfig {
             storeType = StoreType.valueOf(props.getProperty("story.type", "FILE"));
             messageFile = props.getProperty("message.file", "data/config.properties");
             messageMaxLength = Integer.parseInt(props.getProperty("message.maxLength", "200"));
-        }catch(Exception e){
-            System.out.println("ERROR");
+        }catch(IOException e){
+            throw new ConfigException();
         }
     }
 
